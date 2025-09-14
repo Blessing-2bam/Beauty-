@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.font-cormorant {
+  font-family: 'Cormorant Upright', serif;
+}
+
+.my-div {
+  background-color: aliceblue;
+}
+
+
