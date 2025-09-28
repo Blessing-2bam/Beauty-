@@ -198,6 +198,7 @@ const Gallerys = () => {
                   src={product.img}
                   alt={product.name}
                   className="w-full h-48 object-cover rounded-lg mb-4"
+                  loading="lazy"
                 />
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{product.name}</h3>

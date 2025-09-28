@@ -69,6 +69,7 @@ const Product = () => {
                 alt={`thumb-${i}`}
                 onClick={() => handleClick(img)}
                 className="w-34 h-34 object-cover rounded-lg cursor-pointer m-2 shadow-lg"
+                loading="lazy"
               />
             ))}
           </div>
@@ -80,6 +81,7 @@ const Product = () => {
             src={stack[0]}
             alt="main-preview"
             className="w-full h-full object-cover rounded-lg shadow-lg transition-all duration-700"
+            loading="lazy"
           />
         </div>
       </div>

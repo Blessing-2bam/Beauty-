@@ -16,6 +16,7 @@ const ArtService = () => {
             src={Blog_lg}
             alt="Nail art showcase"
             className="w-full rounded-2xl shadow-lg mb-8"
+            loading="lazy"
           />
 
           {/* About Section */}
@@ -68,6 +69,7 @@ const ArtService = () => {
               src={Blog2}
               alt="Different nail styles"
               className=" shadow-md"
+              loading="lazy"
             />
           </div>
 
