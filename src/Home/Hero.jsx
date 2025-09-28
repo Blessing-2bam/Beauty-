@@ -31,21 +31,19 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      {/* Background Images with Parallax */}
+      {/* Images with Parallax */}
       {slides.map((slide, index) => (
-        <div
+        <img
           key={index}
           ref={index === current ? parallaxRef : null}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${
+          src={slide}
+          alt={`Hero Slide ${index + 1}`}
+          loading={index === 0 ? "eager" : "lazy"} // Preload first image
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             index === current ? "opacity-100 z-20" : "opacity-0 z-10"
           }`}
-          style={{
-            backgroundImage: `url(${slide})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            willChange: "transform", // smooth animation
-          }}
-        ></div>
+          style={{ willChange: "transform" }}
+        />
       ))}
 
       {/* Overlay Text */}

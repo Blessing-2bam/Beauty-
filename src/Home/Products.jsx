@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 
 import img1 from "../assets/item-1.jpg";
@@ -21,13 +21,33 @@ const Products = () => {
   ];
 
   const [index, setIndex] = useState(0);
-  const maxIndex = productData.length - 5; // 7 - 5 = 2 (3 dots total)
+  const [itemsPerView, setItemsPerView] = useState(5); // default desktop
+
+  // Adjust items per view based on screen size
+  useEffect(() => {
+    const updateItemsPerView = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(2); // mobile
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(3); // tablet
+      } else {
+        setItemsPerView(5); // desktop
+      }
+    };
+
+    updateItemsPerView();
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
+  }, []);
+
+  const maxIndex = productData.length - itemsPerView;
+  const slidePercent = 100 / itemsPerView; // width % of each item
 
   return (
-    <section className="py-30 px-6">
+    <section className="py-16 px-4 sm:px-6">
       {/* Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-6xl  tracking-wide">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+        <h3 className="text-3xl sm:text-5xl lg:text-6xl tracking-wide text-center sm:text-left">
           Popular Products
         </h3>
         <Button>View All</Button>
@@ -37,26 +57,28 @@ const Products = () => {
       <div className="overflow-hidden relative">
         <div
           className="flex transition-transform duration-500"
-          style={{ transform: `translateX(-${index * 20}%)` }}
+          style={{
+            transform: `translateX(-${index * slidePercent}%)`,
+          }}
         >
           {productData.map((product) => (
             <div
               key={product.id}
-              className="w-1/5 flex-shrink-0 px-2 flex flex-col"
+              className={`w-1/${itemsPerView} flex-shrink-0 px-2 flex flex-col`}
             >
               {/* Image */}
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-65 mt-15 object-cover rounded-lg shadow-md"
+                className="w-full h-48 sm:h-56 lg:h-65 object-cover rounded-lg shadow-md"
               />
 
               {/* Title + Price row */}
-              <div className="flex justify-between items-center mt-2">
-                <span className="text-gray-600 font-semi-bold text-2xl ">
+              <div className="flex justify-between items-center mt-3">
+                <span className="text-gray-600 font-semibold text-sm sm:text-lg lg:text-2xl">
                   {product.title}
                 </span>
-                <span className="text-gray-500 font-semibold text-xl">
+                <span className="text-gray-500 font-semibold text-sm sm:text-base lg:text-xl">
                   {product.price}
                 </span>
               </div>
@@ -71,7 +93,7 @@ const Products = () => {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`w-5 h-5 mt-5 rounded-full ${
+            className={`w-3 h-3 sm:w-4 sm:h-4 mt-3 rounded-full ${
               index === i ? "bg-pink-500" : "bg-gray-300"
             }`}
           />

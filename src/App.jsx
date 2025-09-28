@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 // Global reusable components
 import Navbar from "./components/Navbar";
@@ -21,13 +21,14 @@ import Blog from "./Pages/Blogs";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/Beauty-/">
       <div style={{ fontFamily: "'Cormorant Upright', serif" }}>
         {/* Navbar always visible */}
         <Navbar />
 
         {/* Page Content */}
-        <Routes>
+        <div className="pt-16">
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/appointment" element={<Appointment />} />
@@ -39,11 +40,14 @@ function App() {
           <Route path="/services/category1" element={<Services/>} />
           <Route path="/services/category2" element={<ServicesDetails/>} />
           <Route path="/blog/category1" element={<Blog/>} />
-          {/* Add more pages here later, e.g.: */}
-          {/* <Route path="/about" element={<About />} /> */}
-          {/* <Route path="/services" element={<Services />} /> */}
+          
+          <Route path="*" element={<Navigate to="/" />} />
+
         </Routes>
 
+
+        </div>
+        
         {/* Footer always visible */}
         <Footer />
       </div>

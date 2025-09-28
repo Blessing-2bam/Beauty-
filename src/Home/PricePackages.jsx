@@ -9,8 +9,6 @@ import service_img8 from '../assets/service-img8.jpg'
 import service_img3 from '../assets/service-img3.jpg'
 import background_img2 from '../assets/background-2.jpg'
 
-
-
 const PricePackages = () => {
   const packages = [
     { id: 1, title: "Gel Nail Extensions", price: "$130.00", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.", image: service_img3 },
@@ -28,53 +26,25 @@ const PricePackages = () => {
   const secondGroup = packages.slice(4, 8)
 
   return (
-    <section className="py-35 px-6 mt-20 bg-gray-50 bg-cover bg-no-repeat bg-fixed"
-    style={{ backgroundImage: `url(${background_img2})`, backgroundPosition: "center" }}>
-      <h2 className="text-6xl  text-center mb-12 text-gray-800">
-         Price Packages
+    <section 
+      className="py-20 px-4 sm:px-6 lg:px-12 mt-20 bg-gray-50 bg-cover bg-no-repeat bg-fixed"
+      style={{ backgroundImage: `url(${background_img2})`, backgroundPosition: "center" }}
+    >
+      <h2 className="text-3xl sm:text-5xl lg:text-6xl text-center mb-12 text-gray-800">
+        Price Packages
       </h2>
 
       {/* Flex two white backgrounds */}
       <div className="flex flex-col lg:flex-row gap-8">
         {/* First White Box */}
-        <div className="bg-white shadow-md p-6 rounded-lg flex-1">
+        <div className="bg-white shadow-md p-4 sm:p-6 rounded-lg flex-1">
           {firstGroup.map((pkg) => (
             <div 
               key={pkg.id} 
-              className="flex items-center p-8 mb-6 last:border-none last:pb-0 last:mb-0 hover:bg-gray-100"
+              className="flex flex-col sm:flex-row sm:items-center p-4 sm:p-6 mb-6 last:mb-0 hover:bg-gray-100 rounded-lg"
             >
               {/* Image */}
-              <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-full">
-                <img 
-                  src={pkg.image} 
-                  alt={pkg.title} 
-                  className="w-full h-full object-cover " 
-                />
-              </div>
-
-              {/* Details + Price */}
-              <div className="flex justify-between items-center flex-grow ml-6 ">
-                <div>
-                  <h3 className="text-2xl font-semibold text-gray-700">{pkg.title}</h3>
-                  <p className="text-gray-500  text-xl mt-2">{pkg.description}</p>
-                </div>
-                <p className="text-gray-700   font-bold text-2xl ml-6 whitespace-nowrap">
-                  {pkg.price}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Second White Box */}
-        <div className="bg-white shadow-md p-6 rounded-lg flex-1">
-          {secondGroup.map((pkg) => (
-            <div 
-              key={pkg.id} 
-              className="flex items-center  p-8 mb-6 last:border-none last:pb-0 last:mb-0 hover:bg-gray-100"
-            >
-              {/* Image */}
-              <div className="w-24 h-24 flex-shrink-0 overflow-hidden rounded-full">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto sm:mx-0 flex-shrink-0 overflow-hidden rounded-full mb-4 sm:mb-0">
                 <img 
                   src={pkg.image} 
                   alt={pkg.title} 
@@ -83,12 +53,42 @@ const PricePackages = () => {
               </div>
 
               {/* Details + Price */}
-              <div className="flex justify-between items-center flex-grow ml-6">
+              <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start flex-grow sm:ml-6 text-center sm:text-left">
                 <div>
-                  <h3 className="text-2xl font-semibold text-gray-700">{pkg.title}</h3>
-                  <p className="text-gray-500 text-xl mt-2">{pkg.description}</p>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-700">{pkg.title}</h3>
+                  <p className="text-gray-500 text-sm sm:text-base md:text-lg mt-2">{pkg.description}</p>
                 </div>
-                <p className="text-gray-700 font-bold text-2xl ml-6 whitespace-nowrap">
+                <p className="text-gray-700 font-bold text-xl sm:text-2xl mt-4 sm:mt-0 sm:ml-6 whitespace-nowrap">
+                  {pkg.price}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Second White Box */}
+        <div className="bg-white shadow-md p-4 sm:p-6 rounded-lg flex-1">
+          {secondGroup.map((pkg) => (
+            <div 
+              key={pkg.id} 
+              className="flex flex-col sm:flex-row sm:items-center p-4 sm:p-6 mb-6 last:mb-0 hover:bg-gray-100 rounded-lg"
+            >
+              {/* Image */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto sm:mx-0 flex-shrink-0 overflow-hidden rounded-full mb-4 sm:mb-0">
+                <img 
+                  src={pkg.image} 
+                  alt={pkg.title} 
+                  className="w-full h-full object-cover" 
+                />
+              </div>
+
+              {/* Details + Price */}
+              <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start flex-grow sm:ml-6 text-center sm:text-left">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-semibold text-gray-700">{pkg.title}</h3>
+                  <p className="text-gray-500 text-sm sm:text-base md:text-lg mt-2">{pkg.description}</p>
+                </div>
+                <p className="text-gray-700 font-bold text-xl sm:text-2xl mt-4 sm:mt-0 sm:ml-6 whitespace-nowrap">
                   {pkg.price}
                 </p>
               </div>
@@ -101,4 +101,3 @@ const PricePackages = () => {
 }
 
 export default PricePackages
-
