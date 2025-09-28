@@ -21,7 +21,7 @@ import Blog from "./Pages/Blogs";
 
 function App() {
   return (
-    <Router basename="/Beauty-/">
+    <Router >
       <div style={{ fontFamily: "'Cormorant Upright', serif" }}>
         {/* Navbar always visible */}
         <Navbar />
