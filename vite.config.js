@@ -13,6 +13,5 @@ export default defineConfig({
       avif: { quality: 50 },
     }),
   ],
-  base: "/Beauty-/",
+  base: "/", // ✅ IMPORTANT for Netlify
 });
-
