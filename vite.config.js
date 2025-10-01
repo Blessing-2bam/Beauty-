@@ -5,23 +5,19 @@ import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 export default defineConfig({
   plugins: [
     react(),
-
-    // Image optimizer plugin
     ViteImageOptimizer({
-      // Target formats
-      png: { quality: 80 },  // compress PNGs
-      jpeg: { quality: 80 }, // compress JPEGs
-      jpg: { quality: 80 },  // compress JPGs
-      webp: { quality: 80 }, // generate WebP for modern browsers
-      avif: { quality: 50 }, // optional: generate AVIF
-      gifsicle: { optimizationLevel: 3 }, // for GIFs
-      svgo: true, // for SVG files
-      // Optional: you can set a directory for optimized images
-      // outputDir: 'public/optimized-images'
+      png: { quality: 80 },
+      jpeg: { quality: 80 },
+      jpg: { quality: 80 },
+      webp: { quality: 80 },
+      avif: { quality: 50 },
+      gifsicle: { optimizationLevel: 3 },
+      svgo: true,
     }),
   ],
 
-  // Important if deploying to a GitHub Pages subfolder
- base: process.env.NODE_ENV === "production" ? "/Beauty-/" : "/",
+  // ✅ Use root base for Vercel
+  base: "/",
 });
+
 
